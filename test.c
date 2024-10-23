@@ -62,12 +62,11 @@ int main() {
   int size;
   printf("Enter Size: ");
   scanf("%d", &size);
-  int row,col,i,j;
+  int row,col,i,j,l,m;
   int num = 1;
   row = 1;
   col = 1;  
   int count = 0;
-
   int matrix[size][size];
   
   for(i = 0; i < size; i++){
@@ -88,88 +87,129 @@ int main() {
   //matrix[i][j] = num;
   //num++;
   
-  i++;
+  i--;
   printf("initial i: %d\n", i);
   printf("initial j: %d\n", j);
  
  
  
  // spiralling
-  while(row < size && col < size){
+while(row < size && col < size){
   	
   	printf("row: %d\n", row);
     printf("col: %d\n", col);
-    
   
    // for going down
-  count = 0;
+  if(num < (size*size)) {
+	  count = 0;
+	  while(count < row){
+	  	printf("Going down\n");
+	  	if (count != row) i++;
+		matrix[i][j] = num;
+	  	printf("%d\n", matrix[i][j]);
+	  	count++;
+	  	num++;
+	   
+	  }
+	  if (matrix[i][j + 1] != 0) {
+	  	i++;
+	  	matrix[i][j] = num;
+	  	num++;
+	  }
+	    printf("After going down\n");
+  		for(l = 0; l < size; l++){
+    		for(m = 0; m < size; m++){
+     		 printf("%d ", matrix[l][m]);
+    		}
+    		printf("\n");
+  		}
+  }
  
-  while(count < row){
-  	printf("Going down\n");
-  	
-
-	matrix[i][j] = num;
-  	
-  	printf("%d\n", matrix[i][j]);
-  	if (count != row) i--;
-  	count++;
-  	num++;
-  }  
-  
-  // for going right
-  count = 0;
-  
-  while(count < col){
-    printf("Going right\n");
-    
-	
-  	matrix[i][j] = num;
-  
-  	printf("%d\n", matrix[i][j]);
-  	if (count != col) j++;
-  	count++;
-  	
-  	num++;
+   // for going right
+  if(num < (size*size)) {
+	 
+	  count = 0;
+	  while(count < col){
+	    printf("Going right\n");
+	    if (count != col) j++;
+	  	matrix[i][j] = num;
+	  	printf("%d\n", matrix[i][j]);
+	  	count++;
+	  	num++;
+	    
+	  } 
+	  if (matrix[i - 1][j] != 0) {
+	  	j++;
+	  	matrix[i][j] = num;
+	  	num++;
+	  }
+	  printf("After going right\n");
+	  for(l = 0; l < size; l++){
+	    for(m = 0; m < size; m++){
+	      printf("%d ", matrix[l][m]);
+	    }
+	    printf("\n");
+	  }
   }
   
   // for going up
-  count = 0;
-  
-  while(count < row){
-  	printf("Going up\n");
-  	
-	
-  	matrix[i][j] = num;
-  	
-	printf("%d\n", matrix[i][j]);
-	if (count != row) i++;
-  	count++;
-  	
-  	num++;
+  if(num < (size * size)){
+      	
+	  count = 0;
+	  while(count < row){
+	  	printf("Going up\n");
+	  	if (count != row) i--;
+	  	matrix[i][j] = num;
+		printf("%d\n", matrix[i][j]);	
+	 	count++;
+	  	num++;
+	  	
+	  }
+	  if (matrix[i][j - 1] != 0) {
+	  	i--;
+	  	matrix[i][j] = num;
+	  	num++;
+	  }
+	  
+	  printf("After going up\n");
+	  for(l = 0; l < size; l++){
+	    for(m = 0; m < size; m++){
+	      printf("%d ", matrix[l][m]);
+	    }
+	    printf("\n");
+	  }
   }
-  
   //for going left
-  count = 0;
+  if(num < (size * size)){
   
-  while(count <= col){
-  	printf("Going left\n");
-  	if (count != col) j--;
-  	matrix[i][j] = num;
-  
-  	printf("%d\n", matrix[i][j]);
-  	count++;
-  	
-  	num++;
+	  
+	  count = 0;
+	  while(count < col){
+	  	printf("Going left\n");
+	 	if (count != col) j--;
+//	  	j--;
+		matrix[i][j] = num;
+	  	printf("%d\n", matrix[i][j]);
+	  	count++;
+	  	num++;
+	  }
+	  if(matrix[i + 1][j] != 0){
+	  	j--;
+	  	matrix[i][j] = num;
+	  	num++;
+	  }
+	  printf("After going left\n");
+	  for(l = 0; l < size; l++){
+	    for(m = 0; m < size; m++){
+	      printf("%d ", matrix[l][m]);
+	    }
+	    printf("\n");
+	  }
   }
   
-  
-
- 
- 
    row++;col++;
- 
 }
- 
+printf("\n");
  
  // Wrong Code
  /* while(row <= size && col <= size){
