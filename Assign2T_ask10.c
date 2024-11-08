@@ -121,7 +121,7 @@ int main() {
             // printf("maxStar: %d\n", max_star - 2);
             // printf("star_num; %d\n", star_num);
             // printf("In last row\n");
-            mid_space += (max_star - 1) + 2;
+            mid_space += 2;
             for(i=0;i<mid_space;i++){
                 printf(".");
             }
